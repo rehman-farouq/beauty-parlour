@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1a0510;
+  color: #f6ede0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Ornamental divider — echoes the sprig-and-heart motif from the brand mark */
+.divider-sprig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #d4af37;
+}
+.divider-sprig::before,
+.divider-sprig::after {
+  content: "";
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+@media (min-width: 640px) {
+  .divider-sprig::before,
+  .divider-sprig::after {
+    width: 5rem;
+  }
+}
+
+/* Gold hairline card border used across panels */
+.gilt-card {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  position: relative;
+}
+.gilt-card::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  pointer-events: none;
+}
+
+/* Focus visibility for keyboard nav */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(180deg, #f3e2a5 0%, #d4af37 45%, #a9822a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
