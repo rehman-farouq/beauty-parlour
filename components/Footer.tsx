@@ -229,7 +229,7 @@ export default function Footer() {
                     group-hover:text-gold-400
                   "
                 >
-                  +92 345 6920533
+                  +92 346 578 7588
                 </span>
               </a>
 
