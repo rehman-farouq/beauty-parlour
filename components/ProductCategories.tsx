@@ -1,31 +1,33 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Gem, Sparkles, ShoppingBag, Crown } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 const categories = [
   {
     title: "Cosmetics",
     tagline: "Premium & Branded Products",
-    img: "/images/cosmetics.png",
+    img: "/images/cosmetics.webp",
     icon: Sparkles,
   },
   {
     title: "Jewelry",
     tagline: "Elegant & Trendy Collections",
-    img: "/images/jewelry.png",
+    img: "/images/jewelry.webp",
     icon: Gem,
   },
   {
     title: "Dresses",
     tagline: "Bridal, Party & Casual Collections",
-    img: "/images/dresses.png",
+    img: "/images/dresses.webp",
     icon: Crown,
   },
   {
     title: "Beauty Products",
     tagline: "Skincare, Haircare & Makeup Essentials",
-    img: "/images/beauty-products.png",
+    img: "/images/beauty-products.webp",
     icon: ShoppingBag,
   },
 ];
@@ -100,7 +102,7 @@ export default function ProductCategories() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/*  SECTION HEADER  */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 25,
@@ -152,11 +154,11 @@ export default function ProductCategories() {
             Discover our carefully selected collection of beauty, fashion, and
             accessories — everything you need to complete your perfect look.
           </p>
-        </motion.div>
+        </m.div>
 
         {/*  CATEGORY GRID  */}
 
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -170,26 +172,20 @@ export default function ProductCategories() {
             const Icon = category.icon;
 
             return (
-              <motion.div
+              <TiltCard
                 key={category.title}
                 variants={cardItem}
-                whileHover={{
-                  y: -8,
-                }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
                 className="group relative"
               >
                 <div className="gilt-card relative overflow-hidden rounded-2xl border border-gold-500/15 bg-wine-950/60 shadow-lg shadow-black/10 transition-all duration-300 group-hover:border-gold-500/40 group-hover:shadow-2xl group-hover:shadow-black/30">
                   {/*  IMAGE  */}
 
                   <div className="relative aspect-[4/4.5] overflow-hidden bg-gradient-to-br from-wine-700 to-wine-950">
-                    <img
+                    <Image
+                      fill
                       src={category.img}
                       alt={`${category.title} collection at Anabia's Beauty Parlour`}
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       onError={(event) => {
                         event.currentTarget.style.display = "none";
                       }}
@@ -243,14 +239,14 @@ export default function ProductCategories() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </TiltCard>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/*  BOTTOM BANNER  */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 20,
@@ -304,7 +300,7 @@ export default function ProductCategories() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

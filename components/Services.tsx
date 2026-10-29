@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
+import TiltCard from "@/components/TiltCard";
 
 type Service = {
   title: string;
@@ -33,7 +35,7 @@ const services: Service[] = [
   {
     title: "Makeup & Skincare",
     tagline: "Everyday Makeup & Skincare Essentials",
-    img: "/images/services/makeup-skincare.png",
+    img: "/images/services/makeup-skincare.webp",
     slug: "makeup-skincare",
   },
   {
@@ -51,7 +53,7 @@ const services: Service[] = [
   {
     title: "Body Treatments",
     tagline: "Massage, Spa & Wellness Packages",
-    img: "/images/services/body-treatments.png",
+    img: "/images/services/body-treatments.webp",
     slug: "body-treatments",
   },
 ];
@@ -124,7 +126,7 @@ export default function Services() {
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         {/* SECTION HEADER*/}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 30,
@@ -144,7 +146,7 @@ export default function Services() {
           className="mb-12 text-center sm:mb-14"
         >
           {/* Decorative Sparkle */}
-          <motion.div
+          <m.div
             initial={{
               opacity: 0,
               scale: 0.7,
@@ -166,7 +168,7 @@ export default function Services() {
             <Sparkles className="h-5 w-5 text-gold-400" />
 
             <span className="h-px w-12 bg-gradient-to-l from-transparent to-gold-500/50" />
-          </motion.div>
+          </m.div>
 
           {/* Heading */}
           <h2 className="font-display text-4xl leading-tight text-gradient-gold sm:text-5xl lg:text-6xl">
@@ -190,7 +192,7 @@ export default function Services() {
           </div>
 
           {/* View All Button */}
-          <motion.a
+          <m.a
             whileHover={{
               scale: 1.04,
             }}
@@ -202,12 +204,12 @@ export default function Services() {
           >
             View All Services
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </motion.a>
-        </motion.div>
+          </m.a>
+        </m.div>
 
         {/* SERVICES GRID*/}
 
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -229,15 +231,8 @@ export default function Services() {
                 index === 0 ? "lg:col-span-2 lg:row-span-1" : ""
               }`}
             >
-              <motion.div
+              <TiltCard
                 variants={cardAnimation}
-                whileHover={{
-                  y: -8,
-                }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
                 className="group relative h-full min-h-[390px] cursor-pointer overflow-hidden rounded-2xl"
               >
                 {/* GOLD OUTER GLOW*/}
@@ -251,11 +246,11 @@ export default function Services() {
 
                 <div className="gilt-card relative h-full min-h-[390px] overflow-hidden rounded-2xl bg-wine-950">
                   {/* Image */}
-                  <img
+                  <Image
+                    fill
                     src={service.img}
                     alt={`${service.title} service at Anabia's Beauty Parlour`}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
 
                   {/* Dark Gradient */}
@@ -272,7 +267,7 @@ export default function Services() {
 
                   {/* TOP SPARKLE*/}
 
-                  <motion.div
+                  <m.div
                     animate={{
                       opacity: [0.3, 0.8, 0.3],
                       scale: [1, 1.1, 1],
@@ -286,7 +281,7 @@ export default function Services() {
                     className="absolute right-5 top-5"
                   >
                     <Sparkles className="h-5 w-5 text-gold-300" />
-                  </motion.div>
+                  </m.div>
 
                   {/* 
                       CONTENT
@@ -319,14 +314,14 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </TiltCard>
             </Link>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* BOTTOM MESSAGE*/}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 20,
@@ -346,7 +341,7 @@ export default function Services() {
           <p className="font-script text-2xl text-blush-300 sm:text-3xl">
             Beauty made personal, elegant & unforgettable.
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

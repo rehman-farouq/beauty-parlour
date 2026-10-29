@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 
 const links = [
   { href: "/#services", label: "Services" },
@@ -15,7 +16,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <motion.header
+    <m.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
@@ -64,8 +65,10 @@ export default function Navbar() {
                 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.12)]
               "
             >
-              <img
-                src="/images/icon.png"
+              <Image
+                width={40}
+                height={40}
+                src="/images/icon.webp"
                 alt="Anabia's Beauty Parlour"
                 className="
                   h-full
@@ -213,7 +216,7 @@ export default function Navbar() {
           >
             <AnimatePresence mode="wait" initial={false}>
               {open ? (
-                <motion.span
+                <m.span
                   key="close"
                   initial={{
                     rotate: -90,
@@ -233,9 +236,9 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                 >
                   <X className="h-5 w-5" />
-                </motion.span>
+                </m.span>
               ) : (
-                <motion.span
+                <m.span
                   key="menu"
                   initial={{
                     rotate: 90,
@@ -255,7 +258,7 @@ export default function Navbar() {
                   transition={{ duration: 0.2 }}
                 >
                   <Menu className="h-5 w-5" />
-                </motion.span>
+                </m.span>
               )}
             </AnimatePresence>
           </button>
@@ -264,7 +267,7 @@ export default function Navbar() {
         {/*  MOBILE MENU  */}
         <AnimatePresence>
           {open && (
-            <motion.div
+            <m.div
               initial={{
                 opacity: 0,
                 y: -12,
@@ -302,7 +305,7 @@ export default function Navbar() {
                 {/* Mobile Links */}
                 <ul className="space-y-1">
                   {links.map((link, index) => (
-                    <motion.li
+                    <m.li
                       key={link.href}
                       initial={{
                         opacity: 0,
@@ -345,7 +348,7 @@ export default function Navbar() {
                           "
                         />
                       </a>
-                    </motion.li>
+                    </m.li>
                   ))}
                 </ul>
 
@@ -353,7 +356,7 @@ export default function Navbar() {
                 <div className="my-3 h-px bg-gradient-to-r from-transparent via-gold-500/15 to-transparent" />
 
                 {/* Mobile CTA */}
-                <motion.a
+                <m.a
                   href="/#visit"
                   onClick={() => setOpen(false)}
                   whileTap={{ scale: 0.98 }}
@@ -385,12 +388,12 @@ export default function Navbar() {
                       group-hover:translate-x-1
                     "
                   />
-                </motion.a>
+                </m.a>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </m.header>
   );
 }

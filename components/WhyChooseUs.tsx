@@ -9,7 +9,7 @@ import {
   Heart,
   BadgeDollarSign,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 
 const points = [
   {
@@ -118,7 +118,7 @@ export default function WhyChooseUs() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/*  HEADER  */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 30,
@@ -169,11 +169,11 @@ export default function WhyChooseUs() {
             At Anabia&apos;s Beauty Parlour, every detail is designed to make
             you feel beautiful, confident, comfortable, and cared for.
           </p>
-        </motion.div>
+        </m.div>
 
         {/*  FEATURE CARDS  */}
 
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -187,7 +187,7 @@ export default function WhyChooseUs() {
             const Icon = point.icon;
 
             return (
-              <motion.div
+              <m.div
                 key={point.title}
                 variants={cardItem}
                 whileHover={{
@@ -234,14 +234,14 @@ export default function WhyChooseUs() {
                     />
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/*  BOTTOM TRUST CARD  */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             scale: 0.97,
@@ -291,7 +291,7 @@ export default function WhyChooseUs() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

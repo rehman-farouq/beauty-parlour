@@ -70,3 +70,45 @@ button:focus-visible {
   background-clip: text;
   color: transparent;
 }
+
+/* Perf: skip rendering work for off-screen sections */
+section:not(#top) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+/* ---------- Animations (transform/opacity only) ---------- */
+@keyframes gold-dust {
+  0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  15%  { opacity: 0.8; }
+  100% { transform: translate3d(14px, -75vh, 0) scale(1.1); opacity: 0; }
+}
+.gold-dust {
+  animation: gold-dust linear infinite;
+  box-shadow: 0 0 8px 1px rgba(212, 175, 55, 0.6);
+  will-change: transform, opacity;
+}
+
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+
+@keyframes btn-shine {
+  0%, 60% { transform: translateX(-130%) skewX(-18deg); }
+  100%    { transform: translateX(230%) skewX(-18deg); }
+}
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: translateX(-130%) skewX(-18deg);
+  animation: btn-shine 4s ease-in-out infinite;
+  pointer-events: none;
+}

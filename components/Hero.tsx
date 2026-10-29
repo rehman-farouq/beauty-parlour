@@ -1,7 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Crown, Sparkles, Star, Heart, Check } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { m, useScroll, useTransform, type Variants } from "framer-motion";
+import GoldParticles from "@/components/GoldParticles";
 
 const container: Variants = {
   hidden: {
@@ -32,6 +34,10 @@ const item: Variants = {
 };
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 700], [0, -50]);
+  const textY = useTransform(scrollY, [0, 700], [0, 30]);
+
   return (
     <section
       id="top"
@@ -49,38 +55,22 @@ export default function Hero() {
         }}
       />
 
+      <GoldParticles />
+
       {/* Left ambient glow */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.4, 0.7, 0.4],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
       {/* Right ambient glow */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="pointer-events-none absolute -right-40 bottom-10 h-96 w-96 rounded-full bg-blush-400/10 blur-3xl"
-        animate={{
-          scale: [1.1, 1, 1.1],
-          opacity: [0.5, 0.25, 0.5],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
       {/* Decorative ring */}
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="pointer-events-none absolute left-[8%] top-[25%] hidden h-32 w-32 rounded-full border border-gold-500/10 lg:block"
         animate={{
@@ -93,7 +83,7 @@ export default function Hero() {
         }}
       />
 
-      <motion.div
+      <m.div
         aria-hidden="true"
         className="pointer-events-none absolute right-[8%] top-[20%] hidden h-20 w-20 rounded-full border border-blush-400/10 lg:block"
         animate={{
@@ -111,7 +101,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
         {/* IMAGE SIDE */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             x: -60,
@@ -124,26 +114,18 @@ export default function Hero() {
             duration: 0.9,
             ease: "easeOut",
           }}
+          style={{ y: imageY }}
           className="order-2 flex justify-center md:order-1 md:justify-start"
         >
           <div className="relative w-64 sm:w-80 lg:w-[350px]">
             {/* Outer golden glow */}
-            <motion.div
+            <m.div
               aria-hidden="true"
               className="absolute -inset-5 rounded-[120px] bg-gold-500/10 blur-3xl"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [0.95, 1.05, 0.95],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
             />
 
             {/* Image Frame */}
-            <motion.div
+            <m.div
               whileHover={{
                 y: -8,
               }}
@@ -154,8 +136,11 @@ export default function Hero() {
               className="gilt-card relative aspect-[3/4] overflow-hidden rounded-t-[160px] rounded-b-[45px] border border-gold-500/30 bg-gradient-to-b from-wine-700 via-wine-800 to-wine-950 shadow-2xl shadow-black/50"
             >
               {/* Actual Image */}
-              <img
-                src="/images/hero-bride.png"
+              <Image
+                priority
+                width={1536}
+                height={1023}
+                src="/images/hero-bride.webp"
                 alt="Bridal makeup by Anabia's Beauty Parlour"
                 className="h-full w-full object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
               />
@@ -170,7 +155,7 @@ export default function Hero() {
               <div className="pointer-events-none absolute inset-3 rounded-t-[145px] rounded-b-[35px] border border-gold-500/25" />
 
               {/* Top shine */}
-              <motion.div
+              <m.div
                 aria-hidden="true"
                 className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/3 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                 animate={{
@@ -183,10 +168,10 @@ export default function Hero() {
                   ease: "easeInOut",
                 }}
               />
-            </motion.div>
+            </m.div>
 
             {/* Floating sparkle */}
-            <motion.div
+            <m.div
               className="absolute -right-5 top-8 flex h-12 w-12 items-center justify-center rounded-full border border-gold-500/30 bg-wine-950/90 shadow-xl backdrop-blur-md"
               animate={{
                 rotate: [0, 8, -8, 0],
@@ -199,10 +184,10 @@ export default function Hero() {
               }}
             >
               <Sparkles className="h-6 w-6 text-gold-400" />
-            </motion.div>
+            </m.div>
 
             {/* Small floating sparkle */}
-            <motion.div
+            <m.div
               className="absolute -left-4 top-24"
               animate={{
                 y: [0, -10, 0],
@@ -215,10 +200,10 @@ export default function Hero() {
               }}
             >
               <Sparkles className="h-5 w-5 text-gold-400" />
-            </motion.div>
+            </m.div>
 
             {/* Luxury badge */}
-            <motion.div
+            <m.div
               initial={{
                 opacity: 0,
                 y: 20,
@@ -238,7 +223,7 @@ export default function Hero() {
               <span className="text-xs font-medium uppercase tracking-[0.14em] text-gold-300">
                 Luxury Beauty Experience
               </span>
-            </motion.div>
+            </m.div>
 
             {/* Bottom shadow */}
             <div
@@ -246,18 +231,19 @@ export default function Hero() {
               className="absolute -bottom-10 left-1/2 h-14 w-10/12 -translate-x-1/2 rounded-full bg-black/60 blur-2xl"
             />
           </div>
-        </motion.div>
+        </m.div>
 
         {/* CONTENT SIDE*/}
 
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           animate="show"
+          style={{ y: textY }}
           className="order-1 text-center md:order-2 md:text-left"
         >
           {/* Crown decoration */}
-          <motion.div
+          <m.div
             variants={item}
             className="mb-5 flex items-center justify-center gap-3 md:justify-start"
           >
@@ -270,50 +256,73 @@ export default function Hero() {
             />
 
             <span className="h-px w-10 bg-gold-500/50" />
-          </motion.div>
+          </m.div>
 
           {/* Welcome */}
-          <motion.p
+          <m.p
             variants={item}
             className="mb-3 text-xs font-medium uppercase tracking-[0.35em] text-gold-400 sm:text-sm"
           >
             Welcome to
-          </motion.p>
+          </m.p>
 
           {/* Brand Name */}
-          <motion.h1
+          <m.h1
             variants={item}
-            className="font-display text-5xl leading-[0.95] text-gradient-gold sm:text-7xl lg:text-8xl"
+            className="font-display text-5xl leading-[0.95] sm:text-7xl lg:text-8xl"
           >
-            Anabia&apos;s
-          </motion.h1>
+            <span
+              aria-hidden="true"
+              className="inline-block overflow-hidden px-1 pb-3 pt-2 align-bottom"
+            >
+              {"Anabia's".split("").map((char, i) => (
+                <m.span
+                  key={i}
+                  className="inline-block text-gradient-gold"
+                  initial={{ y: "115%", rotate: 8, opacity: 0 }}
+                  animate={{ y: 0, rotate: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.25 + i * 0.06,
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  {char}
+                </m.span>
+              ))}
+            </span>
+            <span className="sr-only">
+              Anabia&apos;s Beauty Parlour — Bridal Makeup, Hair, Skin &amp;
+              Nail Care for Ladies in Tapiala
+            </span>
+          </m.h1>
 
           {/* Business Name */}
-          <motion.p
+          <m.p
             variants={item}
             className="mt-4 font-display text-lg uppercase tracking-[0.28em] text-ivory sm:text-2xl"
           >
             Beauty Parlour
-          </motion.p>
+          </m.p>
 
           {/* Decorative line */}
-          <motion.div
+          <m.div
             variants={item}
             className="mx-auto mt-5 h-px w-24 bg-gradient-to-r from-transparent via-gold-500 to-transparent md:mx-0"
           />
 
           {/* Main tagline */}
-          <motion.p
+          <m.p
             variants={item}
             className="mx-auto mt-6 max-w-xl font-script text-3xl leading-relaxed text-blush-300 sm:text-4xl md:mx-0"
           >
             Enhancing Beauty,
             <br className="hidden sm:block" />
             Boosting Confidence
-          </motion.p>
+          </m.p>
 
           {/* Ladies Only Badge */}
-          <motion.div
+          <m.div
             variants={item}
             className="mt-6 flex justify-center md:justify-start"
           >
@@ -321,20 +330,20 @@ export default function Hero() {
               <Sparkles className="h-3.5 w-3.5" />
               For Ladies Only
             </span>
-          </motion.div>
+          </m.div>
 
           {/* Description */}
-          <motion.p
+          <m.p
             variants={item}
             className="mx-auto mt-6 max-w-lg text-sm leading-7 text-ivory/65 sm:text-base md:mx-0"
           >
             Discover a luxurious beauty experience crafted especially for women.
             From bridal transformations to everyday elegance, we help you look
             and feel your absolute best.
-          </motion.p>
+          </m.p>
 
           {/* Features */}
-          <motion.div
+          <m.div
             variants={item}
             className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 md:justify-start"
           >
@@ -351,15 +360,15 @@ export default function Hero() {
                 {feature}
               </span>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Buttons */}
-          <motion.div
+          <m.div
             variants={item}
             className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start"
           >
             {/* Book Button */}
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.04,
                 boxShadow: "0 10px 30px rgba(212,175,55,0.18)",
@@ -368,15 +377,15 @@ export default function Hero() {
                 scale: 0.97,
               }}
               href="#visit"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold tracking-wide text-wine-950 shadow-lg shadow-gold-500/10 transition-all hover:bg-gold-400 sm:w-auto"
+              className="btn-shine group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold tracking-wide text-wine-950 shadow-lg shadow-gold-500/10 transition-all hover:bg-gold-400 sm:w-auto"
             >
               <Heart className="h-4 w-4" />
               Book Your Appointment
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.a>
+            </m.a>
 
             {/* Services Button */}
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.04,
               }}
@@ -388,13 +397,13 @@ export default function Hero() {
             >
               Explore Services
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </motion.a>
-          </motion.div>
-        </motion.div>
+            </m.a>
+          </m.div>
+        </m.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <m.div
         initial={{
           opacity: 0,
         }}
@@ -409,7 +418,7 @@ export default function Hero() {
       >
         <span className="text-[9px] uppercase tracking-[0.3em]">Discover</span>
 
-        <motion.div
+        <m.div
           className="h-8 w-px bg-gradient-to-b from-gold-500/60 to-transparent"
           animate={{
             scaleY: [1, 0.5, 1],
@@ -421,7 +430,7 @@ export default function Hero() {
             ease: "easeInOut",
           }}
         />
-      </motion.div>
+      </m.div>
     </section>
   );
 }

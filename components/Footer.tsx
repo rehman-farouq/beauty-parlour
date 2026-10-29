@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { Phone, MapPin, ArrowUp, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const SALON_ADDRESS = "House #373, Black Gate, Near Ada, Tapiala, Pakistan";
 
@@ -21,7 +22,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <motion.footer
+    <m.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
@@ -44,7 +45,7 @@ export default function Footer() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-10 py-14 sm:py-16 md:grid-cols-[1.4fr_1fr_1fr]">
           {/*  BRAND  */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{
               opacity: 1,
@@ -74,8 +75,10 @@ export default function Footer() {
                   group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]
                 "
               >
-                <img
-                  src="/images/icon.png"
+                <Image
+                  width={40}
+                  height={40}
+                  src="/images/icon.webp"
                   alt="Anabia's Beauty Parlour"
                   className="
                     h-full
@@ -123,10 +126,10 @@ export default function Footer() {
               Enhancing your natural beauty with premium services, professional
               care, and an experience designed especially for ladies.
             </p>
-          </motion.div>
+          </m.div>
 
           {/*  QUICK LINKS  */}
-          <motion.div
+          <m.div
             initial={{
               opacity: 0,
               y: 20,
@@ -178,10 +181,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
           {/*  CONTACT  */}
-          <motion.div
+          <m.div
             initial={{
               opacity: 0,
               y: 20,
@@ -259,7 +262,7 @@ export default function Footer() {
             </div>
 
             {/* Book Appointment */}
-            <motion.a
+            <m.a
               whileHover={{
                 scale: 1.03,
                 boxShadow: "0 0 20px rgba(212,175,55,0.2)",
@@ -286,8 +289,8 @@ export default function Footer() {
               "
             >
               Book Appointment
-            </motion.a>
-          </motion.div>
+            </m.a>
+          </m.div>
         </div>
 
         {/*  DIVIDER  */}
@@ -341,6 +344,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </motion.footer>
+    </m.footer>
   );
 }

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
 import ProductCategories from "@/components/ProductCategories";
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <Marquee />
       <Services />
       <WhyChooseUs />
       <ProductCategories />

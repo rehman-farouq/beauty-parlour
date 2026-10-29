@@ -8,7 +8,7 @@ import {
   Sparkles,
   CalendarCheck,
 } from "lucide-react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 
 const SALON_ADDRESS = "HRCV+4F7, Tapiala, Pakistan";
 
@@ -32,7 +32,7 @@ const contactInfo = [
     icon: Phone,
     label: "Get In Touch",
     title: "Call Us",
-    text: "+92 3456920533",
+    text: "+92 3465787588",
   },
   {
     icon: Clock,
@@ -110,7 +110,7 @@ export default function VisitUs() {
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         {/*HEADER*/}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 30,
@@ -153,11 +153,11 @@ export default function VisitUs() {
             Step into a world of beauty, elegance, and relaxation. We&apos;d
             love to welcome you at Anabia&apos;s Beauty Parlour.
           </p>
-        </motion.div>
+        </m.div>
 
         {/*CONTACT INFO CARDS*/}
 
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -171,7 +171,7 @@ export default function VisitUs() {
             const Icon = info.icon;
 
             return (
-              <motion.div
+              <m.div
                 key={info.title}
                 variants={item}
                 whileHover={{
@@ -210,14 +210,14 @@ export default function VisitUs() {
                     {info.text}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/*GOOGLE MAP */}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 30,
@@ -252,11 +252,11 @@ export default function VisitUs() {
               className="grayscale-[15%]"
             />
           </div>
-        </motion.div>
+        </m.div>
 
         {/*APPOINTMENT CTA*/}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
             y: 30,
@@ -309,7 +309,7 @@ export default function VisitUs() {
               {/* Buttons */}
               <div className="flex flex-wrap justify-center gap-3">
                 {/* Call Button */}
-                <motion.a
+                <m.a
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 0 25px rgba(212,175,55,0.25)",
@@ -322,10 +322,10 @@ export default function VisitUs() {
                 >
                   <Phone className="h-4 w-4" />
                   Call to Book
-                </motion.a>
+                </m.a>
 
                 {/* Directions Button */}
-                <motion.a
+                <m.a
                   whileHover={{
                     scale: 1.05,
                   }}
@@ -339,15 +339,15 @@ export default function VisitUs() {
                 >
                   <Navigation className="h-4 w-4" />
                   Get Directions
-                </motion.a>
+                </m.a>
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/*LADIES ONLY*/}
 
-        <motion.div
+        <m.div
           initial={{
             opacity: 0,
           }}
@@ -371,7 +371,7 @@ export default function VisitUs() {
           </p>
 
           <span className="h-px w-8 bg-gold-500/20" />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
