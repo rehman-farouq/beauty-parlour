@@ -213,7 +213,7 @@ export default function Footer() {
             <div className="space-y-4">
               {/* Phone */}
               <a
-                href="tel:+923456920533"
+                href="tel:+923465787588"
                 className="
                   group flex items-start
                   justify-center gap-3

@@ -7,8 +7,8 @@ export const SITE = {
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000"),
-  phone: "+923456920533",
-  phoneDisplay: "+92 345 6920533",
+  phone: "+923465787588",
+  phoneDisplay: "+92 346 578 7588",
   address: {
     street: "House #373, Black Gate, Near Ada",
     locality: "Tapiala",

@@ -317,7 +317,7 @@ export default function VisitUs() {
                   whileTap={{
                     scale: 0.96,
                   }}
-                  href="tel:+923456920533"
+                  href="tel:+923465787588"
                   className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-medium tracking-wide text-wine-950 transition-colors hover:bg-gold-400"
                 >
                   <Phone className="h-4 w-4" />
